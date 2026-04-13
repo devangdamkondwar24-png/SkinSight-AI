@@ -52,5 +52,3 @@ python train_model.py --api-key YOUR_API_KEY
 ## ⚕️ Medical Disclaimer
 SkinSight AI is an AI-powered screening tool and does NOT constitute medical diagnosis. Results are for informational purposes only. Always consult a qualified dermatologist for medical advice and treatment.
 
-## 📄 License
-MIT License

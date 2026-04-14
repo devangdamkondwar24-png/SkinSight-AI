@@ -12,7 +12,7 @@ from io import BytesIO
 from PIL import Image
 
 
-def generate_heatmap(image: np.ndarray, lesions: list, zone_health: dict) -> dict:
+def generate_heatmap(image: np.ndarray, lesions: list, zone_health: dict, hyperpigmentation: dict = None) -> dict:
     """
     Generate a lesion density heatmap overlay.
 
@@ -20,6 +20,7 @@ def generate_heatmap(image: np.ndarray, lesions: list, zone_health: dict) -> dic
         image: Original BGR image
         lesions: List of detected lesions with bboxes
         zone_health: Dict of zone assessments
+        hyperpigmentation: Optional dict of pigmented regions
 
     Returns:
         dict with base64-encoded heatmap image and metadata
@@ -59,8 +60,20 @@ def generate_heatmap(image: np.ndarray, lesions: list, zone_health: dict) -> dic
             weight = severity_weight.get(zone_info.get("severity", "clear"), 0)
             if weight > 0 and zone_info.get("points"):
                 points = zone_info["points"]
-                for p in points[::3]:  # Sample every 3rd point
-                    _add_gaussian(heatmap, p["x"], p["y"], 40, weight * 0.3)
+                # Increased spread for zone-based density
+                for p in points[::2]:  # Sample more points
+                    _add_gaussian(heatmap, p["x"], p["y"], 60, weight * 0.4)
+
+    # NEW: Add high density for pigmented regions (Dark Circles, Spots)
+    if hyperpigmentation and "regions" in hyperpigmentation:
+        for region in hyperpigmentation["regions"]:
+            points = region.get("points", [])
+            if points:
+                # Accumulate density within the region
+                # Sample points to spread density across the whole region
+                sample_step = max(1, len(points) // 10)
+                for p in points[::sample_step]:
+                    _add_gaussian(heatmap, p["x"], p["y"], 80, 0.8)
 
     return _encode_heatmap(heatmap, w, h)
 
@@ -101,7 +114,8 @@ def _encode_heatmap(heatmap: np.ndarray, w: int, h: int) -> dict:
     # Create RGBA with alpha based on intensity
     rgba = np.zeros((h, w, 4), dtype=np.uint8)
     rgba[:, :, :3] = colored[:, :, ::-1]  # BGR -> RGB
-    rgba[:, :, 3] = (heatmap_norm * 0.6).astype(np.uint8)  # Semi-transparent
+    # Higher alpha multiplier (0.8 instead of 0.6) for visibility
+    rgba[:, :, 3] = (heatmap_norm * 0.8).astype(np.uint8) 
 
     # Encode to base64
     img = Image.fromarray(rgba, "RGBA")

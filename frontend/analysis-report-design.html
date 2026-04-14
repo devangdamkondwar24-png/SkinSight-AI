@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Sanctuary | Facial Analysis Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eceeed",
+                    "surface-dim": "#d8dada",
+                    "surface-bright": "#f8faf9",
+                    "on-surface-variant": "#424846",
+                    "tertiary-fixed": "#fedbce",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#795f55",
+                    "on-primary-fixed-variant": "#364b46",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#0a1f1b",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#eff1f0",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1c",
+                    "secondary": "#4e635e",
+                    "on-tertiary-fixed-variant": "#594138",
+                    "tertiary": "#72594f",
+                    "on-secondary-fixed": "#0a1f1c",
+                    "secondary-fixed-dim": "#b5cbc6",
+                    "secondary-fixed": "#d0e7e1",
+                    "secondary-container": "#d0e7e1",
+                    "background": "#f8faf9",
+                    "tertiary-container": "#ffdccf",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e1e3e2",
+                    "surface": "#f8faf9",
+                    "primary-fixed-dim": "#b5cbc5",
+                    "tertiary-fixed-dim": "#e1bfb3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-surface": "#191c1c",
+                    "primary-fixed": "#d0e7e1",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c2c8c5",
+                    "outline": "#727876",
+                    "primary": "#4e635e",
+                    "surface-variant": "#e1e3e2",
+                    "surface-container-low": "#f2f4f3",
+                    "on-secondary-fixed-variant": "#364b47",
+                    "on-tertiary-fixed": "#291710",
+                    "inverse-surface": "#2e3131",
+                    "inverse-primary": "#b5cbc5",
+                    "surface-tint": "#4e635e",
+                    "primary-container": "#d1e8e1",
+                    "on-secondary-container": "#546964",
+                    "on-primary-container": "#546964"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px rgba(78, 99, 94, 0.06);
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .face-mesh-overlay {
+            background-image: radial-gradient(circle, rgba(78, 99, 94, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-emerald-900/5 dark:border-emerald-50/5 shadow-sm shadow-emerald-900/5">
+<div class="flex justify-between items-center px-16 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-50 font-headline uppercase">CLINICAL SANCTUARY</div>
+<div class="hidden md:flex items-center gap-8 font-plus-jakarta text-sm tracking-tight font-medium">
+<a class="text-emerald-900 dark:text-emerald-50 border-b-2 border-emerald-900 dark:border-emerald-50 pb-2 transition-colors duration-300" href="#">Analysis</a>
+<a class="text-emerald-900/60 dark:text-emerald-50/60 pb-2 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-300" href="#">Progress</a>
+<a class="text-emerald-900/60 dark:text-emerald-50/60 pb-2 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-300" href="#">Protocols</a>
+<a class="text-emerald-900/60 dark:text-emerald-50/60 pb-2 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-300" href="#">Consult</a>
+<a class="text-emerald-900/60 dark:text-emerald-50/60 pb-2 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-300" href="#">Science</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-emerald-900/60">notifications</button>
+<button class="material-symbols-outlined text-emerald-900/60">account_circle</button>
+</div>
+</div>
+</nav>
+<main class="pt-20 min-h-screen max-w-screen-2xl mx-auto flex flex-col md:flex-row">
+<!-- Left Analysis Workspace (Hero) -->
+<section class="flex-grow p-8 md:p-16 bg-surface-bright relative">
+<header class="mb-12">
+<h1 class="text-display-lg font-headline font-extrabold tracking-tighter text-secondary mb-2 uppercase">Deep-Tissue Diagnostics</h1>
+<p class="text-on-surface-variant font-light tracking-wide uppercase text-xs">Patient Reference: #CS-8892-X | Session: 24 Oct 2024</p>
+</header>
+<div class="relative aspect-[4/5] md:aspect-video bg-surface-container overflow-hidden editorial-shadow group">
+<!-- Main Clinical Face Image -->
+<img alt="Clinical portrait of a face" class="absolute inset-0 w-full h-full object-cover grayscale-[0.2]" data-alt="High-resolution clinical close-up of a person's face with neutral lighting, smooth skin texture, and professional medical studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5ZxxiCfUuOrczdrdrDcTvrITo2IDNCpbrvneHzSpiX79VVAJk17lYtbjDt_pGtTdi0cESTYpcT-ziiHv7iSQxp8mkpMp6-XT24pG1Ozfn7CqvITGDBRBaGefR46vTvWMxP-wDy7VF1WQnj-31r_DLzdGAtVkb5RY2sBr0SskNjjSmN9KorlI-7FwIjVu9yfoPGrtcmWPnnJ7UDow3MUfieRSPEXqkWk_2QS-_7t6muznAW6IBQExsEPyyeFFGw4TXN-fUZchGVL-t"/>
+<!-- 3D Mesh Overlay (Visual Representation) -->
+<div class="absolute inset-0 face-mesh-overlay opacity-40 mix-blend-overlay"></div>
+<!-- Bounding Boxes (Simulated Acne Lesions) -->
+<div class="absolute top-[25%] left-[40%] w-12 h-12 border-2 border-error/60 rounded-sm"></div>
+<div class="absolute top-[35%] left-[45%] w-8 h-8 border-2 border-error/40 rounded-sm"></div>
+<div class="absolute top-[28%] right-[35%] w-10 h-10 border-2 border-error/60 rounded-sm"></div>
+<!-- Overlay Controls -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-surface/90 backdrop-blur-md p-2 rounded-xl editorial-shadow">
+<button class="px-6 py-2 bg-primary text-on-primary text-xs font-bold uppercase tracking-widest transition-all">Heatmap</button>
+<button class="px-6 py-2 text-on-surface-variant hover:bg-primary-container text-xs font-bold uppercase tracking-widest transition-all">Zone Mapping</button>
+<button class="px-6 py-2 text-on-surface-variant hover:bg-primary-container text-xs font-bold uppercase tracking-widest transition-all">Hyperpigmentation</button>
+</div>
+<!-- Floating Data Tag -->
+<div class="absolute top-8 right-8 bg-surface-bright/80 backdrop-blur-sm p-4 border-l-4 border-primary">
+<span class="block text-[10px] uppercase tracking-widest font-bold text-primary mb-1">Live Feed</span>
+<span class="text-xl font-headline font-bold text-secondary">3D Mesh Active</span>
+</div>
+</div>
+<!-- Descriptive Editorial Text -->
+<div class="mt-12 max-w-2xl">
+<p class="text-body-lg text-on-surface-variant leading-relaxed">
+                    Facial analysis utilizes a multi-spectral mapping algorithm to isolate dermal irregularities. Current topography indicates a concentration of inflammatory markers in the perioral region.
+                </p>
+</div>
+</section>
+<!-- Right Metrics Panel (Sidebar) -->
+<aside class="w-full md:w-[450px] bg-surface-container-low p-8 md:p-12 space-y-12 border-l border-outline-variant/10">
+<!-- Acne Severity Scale -->
+<div class="space-y-6">
+<h3 class="text-label-md uppercase tracking-[0.2em] font-bold text-secondary">Acne Severity Scale</h3>
+<div class="relative pt-4">
+<div class="h-[2px] w-full bg-outline-variant/30 flex justify-between">
+<div class="w-1/4 h-full relative">
+<span class="absolute -top-6 left-0 text-[10px] uppercase font-medium opacity-40">Clear</span>
+</div>
+<div class="w-1/4 h-full relative">
+<span class="absolute -top-6 left-0 text-[10px] uppercase font-medium opacity-40">Mild</span>
+</div>
+<div class="w-1/4 h-full relative">
+<span class="absolute -top-6 left-0 text-[10px] uppercase font-bold text-primary">Moderate</span>
+<div class="absolute -top-1 left-0 w-3 h-3 rounded-full bg-primary ring-4 ring-primary-container"></div>
+</div>
+<div class="w-1/4 h-full relative">
+<span class="absolute -top-6 left-0 text-[10px] uppercase font-medium opacity-40">Severe</span>
+</div>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant font-light italic">Condition categorized as Type II inflammatory papules.</p>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest p-6 flex flex-col justify-between aspect-square editorial-shadow">
+<span class="material-symbols-outlined text-primary text-3xl">biotech</span>
+<div>
+<div class="text-4xl font-headline font-bold text-secondary">12</div>
+<div class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Lesions Detected</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 flex flex-col justify-between aspect-square editorial-shadow">
+<span class="material-symbols-outlined text-primary text-3xl">texture</span>
+<div>
+<div class="text-4xl font-headline font-bold text-secondary">15%</div>
+<div class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Hyperpigmentation</div>
+</div>
+</div>
+</div>
+<!-- Zone Health Status -->
+<div class="space-y-6">
+<h3 class="text-label-md uppercase tracking-[0.2em] font-bold text-secondary">Zone Health Status</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between group">
+<span class="text-xs uppercase tracking-widest font-medium">Forehead</span>
+<div class="flex items-center gap-4">
+<div class="w-32 h-[1px] bg-outline-variant/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-[85%]"></div>
+</div>
+<span class="text-[10px] font-bold text-primary">85% OPTIMAL</span>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<span class="text-xs uppercase tracking-widest font-medium">Cheeks</span>
+<div class="flex items-center gap-4">
+<div class="w-32 h-[1px] bg-outline-variant/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-secondary w-[62%]"></div>
+</div>
+<span class="text-[10px] font-bold text-secondary">62% FAIR</span>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<span class="text-xs uppercase tracking-widest font-medium">Chin/Jaw</span>
+<div class="flex items-center gap-4">
+<div class="w-32 h-[1px] bg-outline-variant/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-error w-[41%]"></div>
+</div>
+<span class="text-[10px] font-bold text-error">41% CRITICAL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action CTA -->
+<div class="pt-8">
+<button class="w-full bg-primary text-on-primary py-5 text-xs font-bold uppercase tracking-[0.3em] transition-transform active:scale-[0.98]">
+                    Generate Treatment Protocol
+                </button>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-16 bg-slate-50 dark:bg-slate-950 border-t border-emerald-900/10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-screen-2xl mx-auto">
+<div class="font-bold text-emerald-900 dark:text-emerald-50 font-headline uppercase tracking-widest">CLINICAL SANCTUARY</div>
+<div class="flex flex-wrap justify-center gap-8 font-plus-jakarta text-xs uppercase tracking-widest text-emerald-900/40 dark:text-emerald-50/40">
+<a class="hover:underline decoration-emerald-900/20 hover:text-emerald-900 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:underline decoration-emerald-900/20 hover:text-emerald-900 transition-colors" href="#">Terms of Service</a>
+<a class="hover:underline decoration-emerald-900/20 hover:text-emerald-900 transition-colors" href="#">Clinical Methodology</a>
+<a class="hover:underline decoration-emerald-900/20 hover:text-emerald-900 transition-colors" href="#">Support</a>
+</div>
+<div class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-900/40 dark:text-emerald-50/40">
+                © 2024 Clinical Sanctuary. Advanced Dermatological Analysis.
+            </div>
+</div>
+</footer>
+</body></html>

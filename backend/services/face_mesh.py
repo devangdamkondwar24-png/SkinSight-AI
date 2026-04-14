@@ -20,28 +20,28 @@ from mediapipe.tasks.python.vision import (
 )
 
 
-# Refined zone landmark indices for segmentation
-FOREHEAD_INDICES = [10, 338, 297, 332, 284, 251, 389, 356, 454,
-                    323, 361, 288, 278, 344, 340, 261, 446, 255,
-                    339, 254, 253, 252, 256, 341, 463, 414, 286,
-                    258, 257, 259, 260, 467, 299, 296, 336, 9,
-                    107, 66, 69, 104, 68, 71, 21, 54, 103, 67, 109]
+# Standard clinical facial zone landmark indices
+# These are grouped by anatomical regions for dermatology
+FOREHEAD_INDICES = [103, 67, 109, 10, 338, 297, 332, 284, 251, 21, 54, 103, 
+                    10, 338, 297, 332, 9, 284, 251, 68, 104, 69, 108, 151, 337, 299, 333]
 
-LEFT_CHEEK_INDICES = [93, 132, 58, 172, 136, 150, 149, 176, 148, 152]
+LEFT_CHEEK_INDICES = [116, 117, 118, 101, 123, 111, 147, 213, 192, 214, 210, 211, 208, 142]
 
-RIGHT_CHEEK_INDICES = [323, 361, 288, 397, 365, 379, 378, 400, 377, 152]
+RIGHT_CHEEK_INDICES = [345, 346, 347, 330, 352, 340, 376, 433, 416, 434, 430, 431, 428, 371]
 
-NOSE_INDICES = [168, 6, 197, 195, 5, 4, 1, 19, 94, 2, 164, 0, 11,
-                12, 13, 14, 15, 16, 17, 18, 200, 199, 175]
+NOSE_INDICES = [168, 6, 197, 195, 5, 4, 1, 19, 94, 2, 164, 0, 48, 278, 219, 439]
 
-CHIN_INDICES = [152, 377, 400, 378, 379, 365, 397, 288, 361, 323,
-                454, 356, 389, 251, 284, 332, 297, 338, 10, 109,
-                67, 103, 54, 21, 162, 127, 234, 93, 132, 58, 172,
-                136, 150, 149, 176, 148]
+CHIN_INDICES = [152, 377, 400, 378, 379, 365, 397, 148, 176, 149, 150, 136, 172, 152]
+
+JAWLINE_INDICES = [58, 172, 136, 150, 149, 176, 148, 152, 377, 400, 378, 379, 365, 397, 288, 361, 234, 127, 454, 356, 10]
 
 FACE_OVAL_INDICES = [10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288,
                      397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136,
                      172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109]
+
+EYE_LEFT_INDICES = [33, 7, 163, 144, 145, 153, 154, 155, 133, 173, 157, 158, 159, 160, 161, 246]
+EYE_RIGHT_INDICES = [362, 382, 381, 380, 374, 373, 390, 249, 263, 466, 388, 387, 386, 385, 384, 398]
+LIPS_OUTER_INDICES = [61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 308, 324, 318, 402, 317, 14, 87, 178, 88, 95]
 
 
 class FaceMeshService:
@@ -61,9 +61,9 @@ class FaceMeshService:
             base_options=BaseOptions(model_asset_path=model_path),
             running_mode=RunningMode.IMAGE,
             num_faces=1,
-            min_face_detection_confidence=0.5,
-            min_face_presence_confidence=0.5,
-            min_tracking_confidence=0.5,
+            min_face_detection_confidence=0.15,
+            min_face_presence_confidence=0.15,
+            min_tracking_confidence=0.15,
             output_face_blendshapes=False,
             output_facial_transformation_matrixes=False,
         )
@@ -78,16 +78,8 @@ class FaceMeshService:
     def process(self, image: np.ndarray) -> dict:
         """
         Extract face mesh landmarks from an image.
-
-        Args:
-            image: BGR numpy array from OpenCV
-
-        Returns:
-            dict with 'landmarks', 'connections', 'zones', and 'detected'
         """
         h, w = image.shape[:2]
-
-        # Convert BGR to RGB for MediaPipe
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
 
@@ -97,8 +89,6 @@ class FaceMeshService:
             return {"landmarks": [], "connections": [], "zones": {}, "detected": False}
 
         face = result.face_landmarks[0]
-
-        # Normalize landmarks
         landmarks = []
         for lm in face:
             landmarks.append({
@@ -110,45 +100,84 @@ class FaceMeshService:
         # Extract zone polygons
         zones = self._extract_zones(landmarks, w, h)
 
+        # Specialized masking regions (Eyes/Lips)
+        feature_masks = {
+            "eye_left": [landmarks[i] for i in EYE_LEFT_INDICES if i < len(landmarks)],
+            "eye_right": [landmarks[i] for i in EYE_RIGHT_INDICES if i < len(landmarks)],
+            "lips": [landmarks[i] for i in LIPS_OUTER_INDICES if i < len(landmarks)]
+        }
+
         return {
             "landmarks": landmarks,
             "connections": self.connections,
             "zones": zones,
+            "feature_masks": feature_masks,
             "detected": True,
             "image_width": w,
             "image_height": h,
         }
 
     def _extract_zones(self, landmarks: list, w: int, h: int) -> dict:
-        """Extract facial zone polygon boundaries from landmarks."""
+        """
+        Extract facial zone polygon boundaries.
+        Uses Convex Hull to ensure smooth, clinical geometry.
+        """
         zone_defs = {
-            "forehead": FOREHEAD_INDICES,
-            "left_cheek": LEFT_CHEEK_INDICES,
-            "right_cheek": RIGHT_CHEEK_INDICES,
-            "nose": NOSE_INDICES,
-            "chin_jawline": CHIN_INDICES,
+            "forehead": {"indices": FOREHEAD_INDICES, "label": "Forehead"},
+            "left_cheek": {"indices": LEFT_CHEEK_INDICES, "label": "Left Cheek"},
+            "right_cheek": {"indices": RIGHT_CHEEK_INDICES, "label": "Right Cheek"},
+            "nose": {"indices": NOSE_INDICES, "label": "Nose"},
+            "chin": {"indices": CHIN_INDICES, "label": "Chin"},
+            "jawline": {"indices": JAWLINE_INDICES, "label": "Jawline"},
         }
 
         zones = {}
-        for name, indices in zone_defs.items():
-            points = []
-            for idx in indices:
+        for name, config in zone_defs.items():
+            raw_points = []
+            for idx in config["indices"]:
                 if idx < len(landmarks):
                     lm = landmarks[idx]
-                    points.append({
-                        "x": round(lm["x"] * w),
-                        "y": round(lm["y"] * h),
-                    })
+                    raw_points.append([round(lm["x"] * w), round(lm["y"] * h)])
+            
+            if not raw_points:
+                continue
+            
+            # CONVEX HULL SMOOTHING: Transform jagged points into a clean, solid block
+            pts_arr = np.array(raw_points, dtype=np.int32)
+            hull = cv2.convexHull(pts_arr)
+            
+            smooth_points = []
+            for pt in hull:
+                smooth_points.append({
+                    "x": int(pt[0][0]),
+                    "y": int(pt[0][1]),
+                })
+
             zones[name] = {
-                "points": points,
+                "display_name": config["label"],
+                "points": smooth_points,
                 "affected": False,
                 "severity": "clear",
             }
 
+        # Side-Profile Filter
+        if "left_cheek" in zones and "right_cheek" in zones:
+            l_pts = np.array([[p["x"], p["y"]] for p in zones["left_cheek"]["points"]], dtype=np.float32)
+            r_pts = np.array([[p["x"], p["y"]] for p in zones["right_cheek"]["points"]], dtype=np.float32)
+            
+            l_area = cv2.contourArea(l_pts)
+            r_area = cv2.contourArea(r_pts)
+            
+            if l_area > 0 and r_area > 0:
+                if l_area < r_area * 0.20:
+                    del zones["left_cheek"]
+                elif r_area < l_area * 0.20:
+                    del zones["right_cheek"]
+
         return zones
 
     def get_face_mask(self, landmarks: list, w: int, h: int) -> np.ndarray:
-        """Create a binary mask of the face region from landmarks."""
+        """Create a binary mask of the face region."""
         mask = np.zeros((h, w), dtype=np.uint8)
         points = []
         for idx in FACE_OVAL_INDICES:

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkinSight AI | Clinical Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8faf9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .tonal-shift-bg {
+            background-color: #f8faf9;
+        }
+        .scale-98-active:active {
+            transform: scale(0.98);
+        }
+        .clinical-frame {
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 20px 50px rgba(0,0,0,0.05);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #4e635e, transparent);
+            position: absolute;
+            z-index: 10;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .overlay-chip-active {
+            background-color: #4e635e;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(78, 99, 94, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#fedbce",
+                      "on-primary-fixed-variant": "#364b46",
+                      "tertiary": "#72594f",
+                      "primary-fixed": "#d0e7e1",
+                      "on-primary-fixed": "#0a1f1b",
+                      "background": "#f8faf9",
+                      "surface-container": "#eceeed",
+                      "surface-tint": "#4e635e",
+                      "secondary-fixed": "#d0e7e1",
+                      "on-surface": "#191c1c",
+                      "surface-container-high": "#e6e9e8",
+                      "error-container": "#ffdad6",
+                      "primary": "#4e635e",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#ffdccf",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#546964",
+                      "on-background": "#191c1c",
+                      "on-secondary-container": "#546964",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#2e3131",
+                      "surface-container-highest": "#e1e3e2",
+                      "secondary-container": "#d0e7e1",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#291710",
+                      "surface-container-low": "#f2f4f3",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eff1f0",
+                      "on-secondary-fixed": "#0a1f1c",
+                      "secondary": "#4e635e",
+                      "tertiary-fixed-dim": "#e1bfb3",
+                      "on-surface-variant": "#424846",
+                      "surface-variant": "#e1e3e2",
+                      "primary-fixed-dim": "#b5cbc5",
+                      "surface-bright": "#f8faf9",
+                      "inverse-primary": "#b5cbc5",
+                      "surface-dim": "#d8dada",
+                      "outline": "#727876",
+                      "on-tertiary-container": "#795f55",
+                      "on-tertiary-fixed-variant": "#594138",
+                      "primary-container": "#d1e8e1",
+                      "on-secondary-fixed-variant": "#364b47",
+                      "surface": "#f8faf9",
+                      "secondary-fixed-dim": "#b5cbc6",
+                      "outline-variant": "#c2c8c5",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              }
+            },
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-16 py-6 w-full max-w-[1920px] mx-auto font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="text-2xl font-bold tracking-tighter text-teal-900 dark:text-teal-50">SkinSight AI</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-teal-900 dark:text-white border-b-2 border-teal-800 dark:border-teal-400 pb-1" href="#">Analysis</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">Progress</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">Routine</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-teal-800 dark:hover:text-teal-200 transition-colors" href="#">Shop</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-zinc-100/50 p-2 rounded-full transition-all">account_circle</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-zinc-100/50 p-2 rounded-full transition-all">shopping_bag</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 px-16 max-w-[1920px] mx-auto">
+<header class="mb-24">
+<h1 class="text-6xl font-bold tracking-tight text-on-surface mb-4">Clinical Analysis</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">Generated on Oct 24, 2024. Your skin health metrics are calculated using clinical-grade computer vision models and spectral imaging data.</p>
+</header>
+<div class="grid grid-cols-12 gap-12">
+<!-- Left Side: Visual Input & Core Metrics -->
+<section class="col-span-12 lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+<!-- Patient Image View with Control Panel Overlay -->
+<div class="bg-surface-container-lowest p-6 rounded-lg clinical-frame overflow-hidden flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary uppercase">Spectral Capture 001-A</span>
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container"></div>
+</div>
+</div>
+<div class="flex gap-6 grow">
+<!-- Main Image -->
+<div class="relative flex-1 aspect-[3/4] rounded-sm overflow-hidden bg-zinc-100">
+<div class="scanline"></div>
+<img alt="Dermatological Capture" class="w-full h-full object-cover filter saturate-[0.8] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwf56JDO4QN5-HTY8IAGTM_mcvfz95GrQHRieR9WDZ7e3WNK1R-mZcM8xx4Sh--c8NudkI8t-soW8IvXmyQErOHpfJGC0So-aktTVSWu6oS2qET0rxmEpp4KoP8TyT1-_P5WUFw5YPOxG0SjXFnHFJBXCcy6-UOXdgkVvA0341DCL5Y7lr_2vDKDaQ-jaj8ShmrP756O4zEq3ys07BYCklu0G-5xj6sfWGoB6NO5ON0cutUG9Sit_yiBKeFqXkth4juFGgA1Sib3FD"/>
+<!-- Tracking Overlays -->
+<div class="absolute top-[20%] left-[30%] w-8 h-8 border border-teal-400/50 rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-teal-400 rounded-full"></div>
+</div>
+<div class="absolute top-[45%] left-[65%] w-12 h-12 border border-amber-400/50 rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-amber-400 rounded-full"></div>
+</div>
+<div class="absolute bottom-[25%] left-[50%] w-10 h-10 border border-error/50 rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-error rounded-full"></div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded text-[10px] text-white font-mono uppercase tracking-widest">
+                                Processing Neural Map... Active
+                            </div>
+</div>
+<!-- Analysis Control Panel -->
+<div class="flex flex-col gap-2 w-36 shrink-0">
+<div class="mb-4">
+<p class="text-[9px] font-bold text-on-surface-variant/40 tracking-[0.2em] uppercase">Visual Layers</p>
+</div>
+<button class="overlay-chip-active text-[10px] font-bold py-3 px-4 rounded border border-transparent transition-all text-left flex items-center justify-between group scale-98-active">
+                                Lesions
+                                <span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant text-[10px] font-bold py-3 px-4 rounded border border-outline-variant/30 hover:border-primary/40 transition-all text-left flex items-center justify-between scale-98-active">
+                                Zones
+                                <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100">add</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant text-[10px] font-bold py-3 px-4 rounded border border-outline-variant/30 hover:border-primary/40 transition-all text-left flex items-center justify-between scale-98-active">
+                                Heatmap
+                                <span class="material-symbols-outlined text-[14px] opacity-0">add</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant text-[10px] font-bold py-3 px-4 rounded border border-outline-variant/30 hover:border-primary/40 transition-all text-left flex items-center justify-between scale-98-active">
+                                Mesh
+                                <span class="material-symbols-outlined text-[14px] opacity-0">add</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant text-[10px] font-bold py-3 px-4 rounded border border-outline-variant/30 hover:border-primary/40 transition-all text-left flex items-center justify-between scale-98-active">
+                                Hyperpig.
+                                <span class="material-symbols-outlined text-[14px] opacity-0">add</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant text-[10px] font-bold py-3 px-4 rounded border border-outline-variant/30 hover:border-primary/40 transition-all text-left flex items-center justify-between scale-98-active">
+                                Inflam.
+                                <span class="material-symbols-outlined text-[14px] opacity-0">add</span>
+</button>
+<div class="mt-auto border-t border-outline-variant/20 pt-4">
+<p class="text-[9px] font-medium text-on-surface-variant/40 leading-tight italic">Toggle layers to reveal specific dermal metrics.</p>
+</div>
+</div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase">
+<span>Lat: 34.0522° N</span>
+<span>Exp: 1/120 ISO 100</span>
+</div>
+</div>
+<!-- Clinical Severity Scale -->
+<div class="bg-surface-container-lowest p-10 rounded-lg flex flex-col justify-center">
+<div class="mb-10">
+<span class="text-xs font-semibold tracking-widest text-primary uppercase block mb-2">Primary Diagnosis</span>
+<h2 class="text-3xl font-bold">Severity Scale</h2>
+</div>
+<div class="relative pt-8 pb-4">
+<div class="absolute -top-4 left-[50%] -translate-x-1/2 flex flex-col items-center">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">Target</span>
+<div class="w-0.5 h-4 bg-primary"></div>
+</div>
+<div class="h-3 w-full rounded-full bg-surface-container flex overflow-hidden">
+<div class="h-full w-1/4 bg-teal-50"></div>
+<div class="h-full w-1/4 bg-teal-100"></div>
+<div class="h-full w-1/4 bg-teal-300"></div>
+<div class="h-full w-1/4 bg-teal-600"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<span>Clear</span>
+<span class="text-primary">Moderate</span>
+<span>Severe</span>
+</div>
+</div>
+<div class="mt-12 bg-primary-container/30 border border-primary/10 p-4 rounded text-sm italic text-primary">
+                        "Current observation indicates localized inflammation with moderate epidermal stress markers."
+                    </div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low p-12 rounded-lg group hover:bg-surface-container transition-colors duration-300">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<h3 class="text-lg font-bold">Detection Metrics</h3>
+</div>
+<div class="space-y-8">
+<div>
+<p class="text-5xl font-extrabold text-on-surface mb-1">12</p>
+<p class="text-on-surface-variant font-medium">Lesions Detected</p>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<div>
+<p class="text-5xl font-extrabold text-on-surface mb-1">15%</p>
+<p class="text-on-surface-variant font-medium">Hyperpigmentation</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-12 rounded-lg flex flex-col justify-between border-2 border-primary/5">
+<div>
+<span class="text-xs font-bold tracking-widest text-primary uppercase block mb-6">Action Plan</span>
+<h3 class="text-2xl font-bold mb-4 leading-snug">Personalized clinical intervention recommended based on active detection.</h3>
+</div>
+<button class="bg-primary text-on-primary w-full py-5 rounded px-8 font-bold text-sm tracking-widest uppercase scale-98-active transition-all flex justify-between items-center group shadow-xl shadow-primary/10">
+                        Generate Protocol
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Side: Secondary Analysis -->
+<section class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-surface-container-lowest p-10 rounded-lg">
+<h3 class="text-xl font-bold mb-10">Zone Health Status</h3>
+<div class="space-y-12">
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="text-sm font-bold text-on-surface">Forehead</span>
+<span class="text-sm font-bold text-teal-600">85% Optimal</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-teal-500" style="width: 85%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="text-sm font-bold text-on-surface">Cheeks</span>
+<span class="text-sm font-bold text-amber-500">62% Active</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-amber-400" style="width: 62%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="text-sm font-bold text-on-surface">Chin</span>
+<span class="text-sm font-bold text-error">41% Critical</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 41%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-16 p-6 rounded bg-surface-container-low border-l-4 border-primary/20">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">The Chin area shows heightened inflammatory markers. Prioritize localized treatment in tonight's routine.</p>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg aspect-square">
+<img alt="Laboratory setting" class="w-full h-full object-cover" data-alt="Modern high-end clinical laboratory with soft green lighting, scientific equipment in soft focus, sterile and premium atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcAjHaMENaqudQT8Im32G_D9Iq0vHtflbCy6NmBJJKUuvDNK1reNxuWNTek3QEU7iIbHyX4M3zKSC7Ki-zCGcEPgzz5U8nbRTfL1Ktn23DrigbM1-HTRplDzvXo0gtzTTOfUS9a1zzuEVeD-ATYi51lxVLOp721bsongLYr-IxeOhBqqMX8VzHOdfpVVKfSMoGdpl1Mafsr9n6PDiC8gvsxbM1YqL_CtUFEboDZd48mbjqwo0yAGAF7G4t6evWdcECKQbiwSxOObk9"/>
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-sm flex items-center justify-center p-8">
+<div class="text-center">
+<p class="text-on-primary font-bold text-lg mb-2">View Full Spectral Report</p>
+<p class="text-on-primary/80 text-xs tracking-widest uppercase">Available for export as PDF</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="w-full py-24 px-16 mt-32 bg-zinc-50 dark:bg-zinc-900 font-['Plus_Jakarta_Sans'] text-sm leading-relaxed">
+<div class="flex flex-col md:flex-row justify-between items-start w-full max-w-[1920px] mx-auto">
+<div class="mb-12 md:mb-0">
+<div class="text-lg font-bold text-teal-900 dark:text-teal-50 mb-4">SkinSight AI</div>
+<p class="text-zinc-500 dark:text-zinc-400 max-w-xs">© 2024 SkinSight AI. Clinical Precision in Skincare. Utilizing state-of-the-art dermatological analysis algorithms.</p>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div class="flex flex-col space-y-4">
+<span class="font-bold text-teal-900 dark:text-teal-50 uppercase tracking-widest text-xs">Platform</span>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-bold text-teal-900 dark:text-teal-50 uppercase tracking-widest text-xs">Resources</span>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors underline-offset-4 hover:underline" href="#">Clinical Methodology</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors underline-offset-4 hover:underline" href="#">Contact Support</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

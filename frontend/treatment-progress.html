@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkinSight - Treatment &amp; Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ffdccf",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b5cbc6",
+                    "secondary-fixed": "#d0e7e1",
+                    "secondary-container": "#d0e7e1",
+                    "background": "#f8faf9",
+                    "tertiary-fixed-dim": "#e1bfb3",
+                    "surface-container-high": "#e6e9e8",
+                    "on-surface": "#191c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e1e3e2",
+                    "surface": "#f8faf9",
+                    "primary-fixed-dim": "#b5cbc5",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f0",
+                    "tertiary": "#72594f",
+                    "on-secondary-fixed": "#0a1f1c",
+                    "on-background": "#191c1c",
+                    "secondary": "#4e635e",
+                    "on-tertiary-fixed-variant": "#594138",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#795f55",
+                    "on-primary-fixed-variant": "#364b46",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#0a1f1b",
+                    "surface-dim": "#d8dada",
+                    "surface-bright": "#f8faf9",
+                    "surface-container": "#eceeed",
+                    "tertiary-fixed": "#fedbce",
+                    "on-surface-variant": "#424846",
+                    "on-secondary-container": "#546964",
+                    "on-primary-container": "#546964",
+                    "inverse-surface": "#2e3131",
+                    "inverse-primary": "#b5cbc5",
+                    "on-tertiary-fixed": "#291710",
+                    "surface-tint": "#4e635e",
+                    "primary-container": "#d1e8e1",
+                    "primary": "#4e635e",
+                    "primary-fixed": "#d0e7e1",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c2c8c5",
+                    "outline": "#727876",
+                    "surface-variant": "#e1e3e2",
+                    "surface-container-low": "#f2f4f3",
+                    "on-secondary-fixed-variant": "#364b47"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8faf9; color: #191c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .glass-header { backdrop-filter: blur(24px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-emerald-950/80 backdrop-blur-xl flex justify-between items-center px-16 h-20 w-full">
+<div class="text-2xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-50">SkinSight</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-sans tracking-tight text-sm text-emerald-700/60 dark:text-emerald-200/60 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors" href="#">Analysis</a>
+<a class="font-sans tracking-tight text-sm text-emerald-700/60 dark:text-emerald-200/60 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors" href="#">Treatments</a>
+<a class="font-sans tracking-tight text-sm text-emerald-900 dark:text-emerald-50 border-b-2 border-emerald-900 dark:border-emerald-50 pb-1 font-semibold" href="#">Progress</a>
+<a class="font-sans tracking-tight text-sm text-emerald-700/60 dark:text-emerald-200/60 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors" href="#">Store</a>
+<a class="font-sans tracking-tight text-sm text-emerald-700/60 dark:text-emerald-200/60 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors" href="#">Clinics</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-emerald-900 dark:text-emerald-50 hover:opacity-80 transition-all duration-300" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-emerald-900 dark:text-emerald-50 hover:opacity-80 transition-all duration-300" data-icon="account_circle">account_circle</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-16 max-w-[1440px] mx-auto">
+<!-- Hero Editorial Moment -->
+<section class="mb-24 flex flex-col md:flex-row items-end gap-12">
+<div class="md:w-2/3">
+<h4 class="label-md uppercase tracking-widest text-primary mb-4 opacity-70">Clinical Intelligence</h4>
+<h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] text-on-surface mb-8">Treatment<br/>&amp; Progress.</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                    A longitudinal view of your dermal evolution. Leveraging high-resolution scan synthesis to predict and track your cellular journey.
+                </p>
+</div>
+<div class="md:w-1/3 flex justify-end">
+<div class="w-full h-64 bg-primary-container rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Skin texture" class="w-full h-full object-cover opacity-80" data-alt="Ultra high-definition close-up of healthy skin texture with soft morning sunlight highlighting pores and natural glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfvvIhOOjf0I4qkXMpx9G8H-rJqMBVBkisAR91z9Gp5S7wdDPeQqCJgKhF6FbIYwLdzV6rNKLVu1h92NEpmUJKV8Yv7p8L9JWpDLcgBf3SyhegeYnWfvrd85iQsouyEwcr2lBJUP_gqF283Ce7v22hcPbjXTeXEJRxFuQJdbh9BbX6ugC2mTCbOkaM1MdKbIpLte7uIe9IW7ipHw2FF-WKRM_bdxcSbifwP0mU9smgni4X-538m0FOfVrhlWtNCH_w81aCGqeqguSX"/>
+</div>
+</div>
+</section>
+<!-- Progress Tracking: Three Column Multi-Scan -->
+<section class="mb-32">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Column 1: Now -->
+<div class="flex flex-col space-y-8">
+<div class="aspect-[4/5] bg-surface-container-low overflow-hidden rounded relative">
+<img alt="Current Condition" class="w-full h-full object-cover mix-blend-multiply opacity-90" data-alt="A portrait of a person with visible acne breakouts on cheeks and slight redness, clinical lighting, neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqFhBuMsLYULq0I_X6g6f7oabQrRXC26cvmiVQSIdNnjnMPo1sJY566n-KO1GSKp3ZbfvGq7oWEOf8TFcXyk_YbT2BQMt11ecIRKEtn49_LSeOnuNNoddpMjMa_lbOFkblbWTd-auJiTXd4zgLKqwowNx-b3O1ldfmpWF-kgtADExgfMRVP3CpY8aGFr769uZgZXHUUMvc6Y0NtdlkVNPWSG25FGYRmldzlZu6gPr4007Wnt9wvN4nSxopaoAUQv3vzsC9MpO_PDe2"/>
+<div class="absolute inset-0 border-[20px] border-surface-container-low pointer-events-none"></div>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-3 py-1 text-[10px] tracking-widest uppercase font-bold">Now</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-bold tracking-tight text-on-surface">Baseline Scan</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-sm mt-1" data-icon="error_med">error_med</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Active cystic breakouts concentrated on sub-mandibular region.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-sm mt-1" data-icon="error_med">error_med</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Widespread epidermal inflammation (L*a*b* redness index: 24.2).</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-sm mt-1" data-icon="error_med">error_med</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Disrupted lipid barrier resulting in trans-epidermal water loss.</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Column 2: Short Term -->
+<div class="flex flex-col space-y-8 mt-12 md:mt-0">
+<div class="aspect-[4/5] bg-primary-container overflow-hidden rounded relative">
+<img alt="Short Term Progress" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="A portrait of the same person showing reduced redness and healing skin, soft focus, bright clinical lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVD1pIu0F3VTsFaj54fJFJ0zraZxv3gXG88S4hYh7jQA8joYlf9aGnXiaTZbmG0ksTXNUcwinqpViZ2NqvTg2Jo7gjY_WmwuzlklBE-GMyiPcY9TuUmt3-1h84frPX5at-ycjDIJHvpVKgZ8jfT0N7XSLZOIG_ex_SnU5jNkuLHScvDII8h4fEr8ZVkLa5SHufMnOFUgyvZm9FwEYmv_Lgp_R1jDq8XyzNISPBaoHmfG7-WIWY_0imPvCxI4Rwj8yd2PooSxOQUptj"/>
+<div class="absolute inset-0 border-[20px] border-primary-container pointer-events-none"></div>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-3 py-1 text-[10px] tracking-widest uppercase font-bold">2-4 Weeks</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-bold tracking-tight text-on-surface">Stabilization Phase</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Visible texture refinement due to increased keratinocyte turnover.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">65% reduction in active inflammatory lesions.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Restored surface hydration; redness index decreased to 18.5.</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Column 3: Long Term -->
+<div class="flex flex-col space-y-8 mt-24 md:mt-0">
+<div class="aspect-[4/5] bg-emerald-100 overflow-hidden rounded relative">
+<img alt="Long Term Result" class="w-full h-full object-cover mix-blend-multiply opacity-70" data-alt="A portrait of the same person with clear, glowing skin and even tone, ethereal soft light, spa aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQoiom77WCWDwzhsLUsMeuaW9gCiDNaXMEho5EzGnUWaZuWvT3K8bafwr5lA3eUgtVITh9CSu-DW2a764wHQIOfFa5RYfYmEMfPeIqAY3ujIIteCO1Ay4lgduIekEUifNGvv-IvjYkNHkCHPTc5PMMjO4E9-8N__VQ48Hg0oy9aU5jhkajEooxkSatAhPwbnfjRjcqLNlRtEWOsXGzAhRLNkOM8mnaPz4gBFZQK1uj7W_gJpe4TAabis_-wdGLNfks5mDx8dhb-Vn5"/>
+<div class="absolute inset-0 border-[20px] border-emerald-100 pointer-events-none"></div>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-3 py-1 text-[10px] tracking-widest uppercase font-bold">8-12 Weeks</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-bold tracking-tight text-on-surface">Target Equilibrium</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Full clearance of active breakouts and post-inflammatory erythema.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Smoother, light-reflective skin surface (Gloss index: +40%).</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Uniform melanin distribution and reinforced dermal matrix.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- AI-Generated Skincare Recommendations -->
+<section class="bg-surface-container rounded-xl p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px] text-primary" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-[1px] w-12 bg-primary"></div>
+<span class="label-md uppercase tracking-widest text-primary font-bold">Personalized Protocol</span>
+</div>
+<h2 class="text-4xl font-bold tracking-tighter text-on-surface mb-16 max-w-2xl">Based on your synthesis, we've calibrated a high-potency regimen.</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Product 1 -->
+<div class="group">
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-500 group-hover:-translate-y-2">
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline">Step 01 / AM &amp; PM</span>
+<span class="material-symbols-outlined text-primary" data-icon="science">science</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface mb-2">Clinical Cleanser</h4>
+<p class="text-xs uppercase tracking-widest text-primary mb-6">pH 5.5 / Salicylic Acid 2%</p>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">
+                                Deep pore de-congestion without stripping the essential acid mantle. Calibrated for inflammatory acne.
+                            </p>
+<button class="text-xs font-bold uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary transition-all">View Formula</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group">
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-500 group-hover:-translate-y-2">
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline">Step 02 / AM</span>
+<span class="material-symbols-outlined text-primary" data-icon="opacity">opacity</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface mb-2">Corrective Serum</h4>
+<p class="text-xs uppercase tracking-widest text-primary mb-6">Niacinamide 10% / Zinc 1%</p>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">
+                                Regulates sebum production while aggressively reducing surface redness and evening skin tone.
+                            </p>
+<button class="text-xs font-bold uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary transition-all">View Formula</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group">
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-500 group-hover:-translate-y-2">
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline">Step 03 / PM</span>
+<span class="material-symbols-outlined text-primary" data-icon="shield_with_heart">shield_with_heart</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface mb-2">Barrier Balm</h4>
+<p class="text-xs uppercase tracking-widest text-primary mb-6">Ceramides / Squalane</p>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">
+                                A high-density lipid repair complex that seals in moisture and accelerates nighttime cellular healing.
+                            </p>
+<button class="text-xs font-bold uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary transition-all">View Formula</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 bg-emerald-50 dark:bg-emerald-900/20 flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full border-t border-emerald-100/10">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold text-emerald-900 dark:text-emerald-50 mb-2">SkinSight</div>
+<div class="font-sans text-xs uppercase tracking-widest text-emerald-700/50 dark:text-emerald-300/50">© 2024 SkinSight Clinical Labs. All rights reserved.</div>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-sans text-xs uppercase tracking-widest text-emerald-700/50 dark:text-emerald-300/50 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-sans text-xs uppercase tracking-widest text-emerald-700/50 dark:text-emerald-300/50 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-sans text-xs uppercase tracking-widest text-emerald-700/50 dark:text-emerald-300/50 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-200" href="#">Clinical Standards</a>
+<a class="font-sans text-xs uppercase tracking-widest text-emerald-700/50 dark:text-emerald-300/50 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors duration-200" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

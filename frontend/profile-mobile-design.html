@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personal Profile - SkinSight</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#454749",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#1a1c1e",
+                    "surface-dim": "#d8dada",
+                    "primary-container": "#d1e8e2",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#e2e2e2",
+                    "surface-tint": "#4e635e",
+                    "on-secondary-container": "#636465",
+                    "on-primary-container": "#546964",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "tertiary-fixed": "#e2e2e5",
+                    "surface-container-highest": "#e1e3e2",
+                    "tertiary-fixed-dim": "#c6c6c9",
+                    "inverse-on-surface": "#eff1f0",
+                    "background": "#f8faf9",
+                    "surface": "#f8faf9",
+                    "primary": "#4e635e",
+                    "surface-bright": "#f8faf9",
+                    "on-secondary-fixed-variant": "#454747",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#e3e3e6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#b5cbc6",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed-variant": "#364b47",
+                    "outline-variant": "#c2c8c5",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e2e2e2",
+                    "outline": "#727876",
+                    "on-surface-variant": "#424846",
+                    "secondary": "#5d5f5f",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#636567",
+                    "surface-container-high": "#e6e9e8",
+                    "inverse-surface": "#2e3131",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "tertiary": "#5d5e61",
+                    "primary-fixed": "#d0e7e1",
+                    "surface-container-low": "#f2f4f3",
+                    "primary-fixed-dim": "#b5cbc6",
+                    "on-primary-fixed": "#0a1f1c",
+                    "on-background": "#191c1c",
+                    "surface-variant": "#e1e3e2",
+                    "on-surface": "#191c1c",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8faf9;
+        }
+        .headline-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .neural-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface overflow-x-hidden">
+<!-- Neural Orbs (Background texture) -->
+<div class="neural-orb bg-primary-container w-[400px] h-[400px] -top-20 -left-20"></div>
+<div class="neural-orb bg-inverse-primary w-[300px] h-[300px] bottom-40 -right-10"></div>
+<!-- TopAppBar -->
+<header class="bg-emerald-50/80 dark:bg-slate-900/80 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-emerald-100/50 dark:hover:bg-emerald-800/50 transition-colors scale-95 active:duration-150">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-100" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-plus-jakarta-sans font-bold tracking-tight text-lg text-emerald-900 dark:text-emerald-100">Personal Profile</h1>
+</div>
+<div class="w-10"></div> <!-- Spacer for centering if needed -->
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto min-h-screen">
+<!-- Hero Branding / Context -->
+<div class="mb-12">
+<h2 class="headline-font text-display-lg text-4xl font-extrabold tracking-tight text-on-surface mb-2">Build your skin identity</h2>
+<p class="text-on-surface-variant font-medium opacity-70">Tell us a bit about yourself to help our AI personalize your clinical journey.</p>
+</div>
+<!-- Form Section -->
+<div class="space-y-10">
+<!-- Name Input -->
+<div class="space-y-3">
+<label class="font-label text-sm font-semibold ml-2 text-on-surface-variant">Tell us your name</label>
+<div class="bg-surface-container-high rounded-xl px-6 py-4 transition-all duration-300 focus-within:bg-primary-container">
+<input class="bg-transparent border-none w-full p-0 text-on-surface font-semibold placeholder:text-outline/50 focus:ring-0 text-lg" placeholder="e.g. Alex Rivera" type="text"/>
+</div>
+</div>
+<!-- Gender Selection -->
+<div class="space-y-3">
+<label class="font-label text-sm font-semibold ml-2 text-on-surface-variant">Choose your gender</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-8 py-4 rounded-full bg-primary-container text-on-primary-container font-bold text-sm scale-98 transition-all">
+                        Male
+                    </button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-all">
+                        Female
+                    </button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-all">
+                        Other
+                    </button>
+</div>
+</div>
+<!-- Age Input -->
+<div class="space-y-3">
+<label class="font-label text-sm font-semibold ml-2 text-on-surface-variant">Enter your age</label>
+<div class="bg-surface-container-high rounded-xl px-6 py-4 transition-all duration-300 focus-within:bg-primary-container">
+<input class="bg-transparent border-none w-full p-0 text-on-surface font-semibold placeholder:text-outline/50 focus:ring-0 text-lg" placeholder="25" type="number"/>
+</div>
+</div>
+<!-- Aesthetic Card for Trust -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-start gap-6 border-none shadow-[0_20px_40px_rgba(78,99,94,0.04)] mt-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/20 rounded-bl-full -mr-10 -mt-10 blur-xl"></div>
+<div class="bg-primary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface text-base mb-1">Clinical Privacy</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Your data is processed locally with end-to-end encryption. Only our AI analyzes your metrics.</p>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-16 mb-8">
+<button class="w-full bg-secondary-container text-on-secondary-fixed font-bold py-6 rounded-xl flex items-center justify-center gap-3 transition-transform hover:bg-secondary-fixed-dim active:scale-[0.98]">
+<span>Continue</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl h-20 rounded-t-[3rem] shadow-[0_-20px_40px_rgba(78,99,94,0.04)]">
+<a class="flex flex-col items-center justify-center text-emerald-700/50 dark:text-emerald-400/50 px-5 py-2 hover:opacity-80 scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shutter_speed">shutter_speed</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-700/50 dark:text-emerald-400/50 px-5 py-2 hover:opacity-80 scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="spa">spa</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Routine</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-50 rounded-full px-5 py-2 hover:opacity-80 scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-700/50 dark:text-emerald-400/50 px-5 py-2 hover:opacity-80 scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="local_hospital">local_hospital</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Clinic</span>
+</a>
+</nav>
+</body></html>

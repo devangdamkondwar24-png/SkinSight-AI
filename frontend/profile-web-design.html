@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personal Profile | Clinical Sanctuary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8faf9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#594138",
+                    "surface-variant": "#e1e3e2",
+                    "on-primary-fixed": "#0a1f1b",
+                    "on-error-container": "#93000a",
+                    "secondary": "#4e635e",
+                    "outline": "#727876",
+                    "on-tertiary-container": "#795f55",
+                    "tertiary-fixed-dim": "#e1bfb3",
+                    "on-tertiary-fixed": "#291710",
+                    "on-background": "#191c1c",
+                    "on-surface": "#191c1c",
+                    "on-surface-variant": "#424846",
+                    "inverse-primary": "#b5cbc5",
+                    "background": "#f8faf9",
+                    "primary-fixed": "#d0e7e1",
+                    "on-secondary-fixed": "#0a1f1c",
+                    "primary-container": "#d1e8e1",
+                    "inverse-surface": "#2e3131",
+                    "primary": "#4e635e",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eff1f0",
+                    "tertiary-container": "#ffdccf",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f2f4f3",
+                    "surface-container-highest": "#e1e3e2",
+                    "secondary-container": "#d0e7e1",
+                    "surface-container": "#eceeed",
+                    "secondary-fixed-dim": "#b5cbc6",
+                    "on-secondary-container": "#546964",
+                    "tertiary": "#72594f",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "surface-bright": "#f8faf9",
+                    "on-primary-fixed-variant": "#364b46",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c2c8c5",
+                    "primary-fixed-dim": "#b5cbc5",
+                    "surface-dim": "#d8dada",
+                    "on-primary-container": "#546964",
+                    "tertiary-fixed": "#fedbce",
+                    "surface-tint": "#4e635e",
+                    "secondary-fixed": "#d0e7e1",
+                    "on-secondary-fixed-variant": "#364b47"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px rgba(78, 99, 94, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
+<div class="flex justify-between items-center w-full px-16 py-6 max-w-screen-2xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-50">Clinical Sanctuary</div>
+<div class="hidden md:flex items-center gap-12 font-plus-jakarta text-sm tracking-tight text-emerald-800/60 dark:text-emerald-200/60">
+<a class="hover:opacity-80 transition-opacity duration-300" href="#">Analysis</a>
+<a class="hover:opacity-80 transition-opacity duration-300" href="#">Routine</a>
+<a class="hover:opacity-80 transition-opacity duration-300" href="#">Shop</a>
+<a class="hover:opacity-80 transition-opacity duration-300" href="#">Science</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:opacity-80 transition-opacity duration-300 flex items-center">
+<span class="material-symbols-outlined text-emerald-900" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="hover:opacity-80 transition-opacity duration-300 flex items-center text-emerald-900 font-semibold border-b-2 border-emerald-900 pb-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-40 pb-20 px-6">
+<div class="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Side Hero Text / Visual -->
+<div class="lg:col-span-5 pt-12">
+<div class="inline-block bg-primary-container text-on-primary-container px-3 py-1 text-[10px] font-bold tracking-widest uppercase mb-8">
+                    Identity &amp; Data
+                </div>
+<h1 class="text-5xl lg:text-7xl font-bold tracking-tighter text-on-background mb-8 leading-[0.9]">
+                    Personal <br/><span class="text-primary-container bg-primary px-4 py-2">Profile</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-md leading-relaxed mb-12">
+                    Our precision analysis requires accurate baseline data. This sanctuary is built on transparency and clinical accuracy.
+                </p>
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img alt="Clinical environment" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="Minimalist laboratory glass containers with soft morning light hitting clinical equipment in a clean white space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHf3uNqnv01qrjvWPRm0KzBdIQprpa0BYr-zjUpAc5Md7LmNiKjU8-g_UlKUhki9nzOp6RXAk9dS0k_BXbuaBvYb9u0LwLsoJkNmO5Y3-lTQ_X_rd4LmXMLMjUu8TItRyPIdoJI-sGD4qbHOdvqo-0cXiccUbjmmI02584TBJGeU85ELQnG22kF7EOsNQCmYeYOxOLPiphY2rQsiLxlAfTA-IdXnjscve6mgrDmcMXOb1QuxIzXCyjpaC1-jPd2rMlQC23rEyGarKI"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-container/20 to-transparent"></div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-12 lg:p-24 editorial-shadow">
+<div class="max-w-xl mx-auto">
+<div class="mb-16">
+<h2 class="text-2xl font-bold tracking-tight mb-2">About You</h2>
+<div class="h-1 w-12 bg-primary"></div>
+</div>
+<form class="space-y-12">
+<!-- Full Name Field -->
+<div class="group">
+<label class="block font-plus-jakarta text-xs uppercase tracking-widest text-on-surface-variant/70 mb-4 font-semibold">
+                                Full Name
+                            </label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 py-4 px-0 text-xl font-medium focus:ring-0 focus:border-primary transition-all placeholder:text-surface-variant" placeholder="e.g. Julianne Moretti" type="text"/>
+</div>
+<!-- Age Field -->
+<div class="group">
+<label class="block font-plus-jakarta text-xs uppercase tracking-widest text-on-surface-variant/70 mb-4 font-semibold">
+                                Age (Years)
+                            </label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 py-4 px-0 text-xl font-medium focus:ring-0 focus:border-primary transition-all placeholder:text-surface-variant" placeholder="25" type="number"/>
+</div>
+<!-- Gender Selection -->
+<div>
+<label class="block font-plus-jakarta text-xs uppercase tracking-widest text-on-surface-variant/70 mb-8 font-semibold">
+                                Gender Identity
+                            </label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex items-center p-4 cursor-pointer bg-surface-container hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant focus:ring-primary/20" name="gender" type="radio"/>
+<span class="ml-4 text-sm font-medium">Female</span>
+</label>
+<label class="relative flex items-center p-4 cursor-pointer bg-surface-container hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant focus:ring-primary/20" name="gender" type="radio"/>
+<span class="ml-4 text-sm font-medium">Male</span>
+</label>
+<label class="relative flex items-center p-4 cursor-pointer bg-surface-container hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant focus:ring-primary/20" name="gender" type="radio"/>
+<span class="ml-4 text-sm font-medium">Non-binary</span>
+</label>
+<label class="relative flex items-center p-4 cursor-pointer bg-surface-container hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant focus:ring-primary/20" name="gender" type="radio"/>
+<span class="ml-4 text-sm font-medium">Prefer not to say</span>
+</label>
+</div>
+</div>
+<!-- Clinical Note -->
+<div class="bg-surface-container-low p-6 flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="info">info</span>
+<p class="text-xs leading-relaxed text-on-surface-variant">
+                                Your personal data is encrypted and handled according to clinical privacy standards. This information helps us calibrate our skincare analysis algorithms for your specific demographic profile.
+                            </p>
+</div>
+<!-- CTA Button -->
+<div class="pt-8">
+<button class="w-full bg-primary text-on-primary py-6 px-12 font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-3" type="submit">
+                                Save Profile
+                                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-24 px-16 mt-32 bg-emerald-50 dark:bg-slate-950">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end w-full max-w-screen-2xl mx-auto">
+<div>
+<div class="text-lg font-bold text-emerald-900 dark:text-emerald-50 mb-6">Clinical Sanctuary</div>
+<p class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-800/50 dark:text-emerald-200/50">
+                    © 2024 Clinical Sanctuary. Precision in Skincare.
+                </p>
+</div>
+<div class="flex flex-wrap gap-8 md:justify-end">
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-800/50 dark:text-emerald-200/50 hover:text-emerald-900 transition-all" href="#">Privacy Policy</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-800/50 dark:text-emerald-200/50 hover:text-emerald-900 transition-all" href="#">Terms of Service</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-800/50 dark:text-emerald-200/50 hover:text-emerald-900 transition-all" href="#">Clinical Studies</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-emerald-800/50 dark:text-emerald-200/50 hover:text-emerald-900 transition-all" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

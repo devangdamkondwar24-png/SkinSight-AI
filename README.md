@@ -68,5 +68,8 @@ npm run dev
 - **Privacy Sanctuary**: All biometric markers are processed within a clinical confidentiality protocol.
 - **Disclaimer**: This platform does not provide medical diagnosis. Always consult a board-certified dermatologist for medical treatment.
 
+
+
+
 ---
 **Skin Sight Clinical Labs • v2.0 • Premium Digital Dermatology**
